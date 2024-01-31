@@ -71,14 +71,14 @@ function projectToCamelCase(project: Project) {
   };
 }
 
-type Post = {
+export type Post = {
   id: string;
   created_at: Date;
   project_id: string;
   title: string;
   comment: string;
 };
-function postToCamelCase(post: Post) {
+export function postToCamelCase(post: Post) {
   return {
     id: post.id,
     createdAt: post.created_at,
