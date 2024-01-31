@@ -16,12 +16,12 @@ router.get('/:postId', async (req, res) => {
 
     const postId = req.params.postId;
 
-    const projectQuery = await client.query(
-      'SELECT * FROM post WHERE id = $1',
-      [postId],
-    );
-    if (projectQuery.rows.length === 1) {
-      res.json({ project: postToCamelCase(projectQuery.rows[0]) });
+    const postQuery = await client.query('SELECT * FROM post WHERE id = $1', [
+      postId,
+    ]);
+
+    if (postQuery.rows.length === 1) {
+      res.json({ post: postToCamelCase(postQuery.rows[0]) });
     } else {
       res.send(404);
     }
